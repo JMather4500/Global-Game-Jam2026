@@ -8,6 +8,7 @@ public class Enemy1 : MonoBehaviour
     private bool movingRight = true;     // Flag to determine movement direction
     private float startPosX;            // Starting position of the Cop
     private SpriteRenderer spriteRenderer;  // Reference to the SpriteRenderer component
+
     private void Start()
     {
         startPosX = transform.position.x;
@@ -36,6 +37,5 @@ public class Enemy1 : MonoBehaviour
             // Change direction
             movingRight = !movingRight;
         }
-        
     }
 }
