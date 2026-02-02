@@ -959,6 +959,7 @@ GameObject:
   - component: {fileID: 769920409}
   - component: {fileID: 769920413}
   - component: {fileID: 769920412}
+  - component: {fileID: 769920414}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1113,6 +1114,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy1
   patrolDistance: 10
   patrolSpeed: 2
+--- !u!114 &769920414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769920408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7c52ab91eb19d479d7e2f1f2b9f3c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDetection
+  detectionRange: 1
+  target: {fileID: 0}
+  distanceToTarget: 5
+  viewingAngle: {x: 0, y: 0, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &858849165
 GameObject:
   m_ObjectHideFlags: 0
