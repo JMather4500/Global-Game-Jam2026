@@ -8,6 +8,8 @@ public class Enemy1 : MonoBehaviour
     private bool movingRight = true;     // Flag to determine movement direction
     private float startPosX;            // Starting position of the Cop
     private SpriteRenderer spriteRenderer;  // Reference to the SpriteRenderer component
+    private bool patrolling = false;
+    public Animator animator;
 
     private void Start()
     {
@@ -15,27 +17,47 @@ public class Enemy1 : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private WaitForSeconds Wait(int s)
+    {
+        patrolling = true;
+
+        return new WaitForSeconds(s);
+    }
+
     private void Update()
     {
-        // Patrolling back and forth
-        if (movingRight)
+        //if (patrolling == false)
+        //{
+        //    patrolling = true;
+        //    animator.SetBool("Patrolling", false);
+        //    Wait(2);
+        //}
+        //else
         {
-            transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
-            if (!spriteRenderer.flipX)  // Check if sprite is not already flipped
-                spriteRenderer.flipX = true;  // Flip the sprite horizontally
-        }
-        else
-        {
-            transform.Translate(Vector2.left * patrolSpeed * Time.deltaTime);
-            if (spriteRenderer.flipX)  // Check if sprite is already flipped
-                spriteRenderer.flipX = false;  // Flip the sprite back to its original orientation
-        }
+            animator.SetBool("Patrolling", true);
 
-        // Checking if reached patrol distance
-        if (Mathf.Abs(transform.position.x - startPosX) >= patrolDistance)
-        {
-            // Change direction
-            movingRight = !movingRight;
+
+            // Patrolling back and forth
+            if (movingRight)
+            {
+                transform.Translate(Vector2.right * patrolSpeed * Time.deltaTime);
+                if (!spriteRenderer.flipX)  // Check if sprite is not already flipped
+                    spriteRenderer.flipX = true;  // Flip the sprite horizontally
+            }
+            else
+            {
+                transform.Translate(Vector2.left * patrolSpeed * Time.deltaTime);
+                if (spriteRenderer.flipX)  // Check if sprite is already flipped
+                    spriteRenderer.flipX = false;  // Flip the sprite back to its original orientation
+            }
+
+            // Checking if reached patrol distance
+            if (Mathf.Abs(transform.position.x - startPosX) >= patrolDistance)
+            {
+                // Change direction
+                movingRight = !movingRight; 
+            }
+           
         }
     }
 }
